@@ -166,4 +166,18 @@ public class Vehicle {
     public int hashCode() {
         return Objects.hash(lettersPlate, numbersPlate, cityPlate, statePlate);
     }
+
+    @Override
+    public String toString() {
+        return "Plate: " + lettersPlate + "-" + numbersPlate + "-" + cityPlate + "-" + statePlate +
+                "\n   Type: " + vehicleType +
+                "\n   Brand: " + brand +
+                "\tModel: " + model +
+                "   (" + year + ")" +
+                "\n   Doors: " + doors +
+                "\n   Seats: " + seats +
+                "\n   Fuel type: " + fuelType +
+                "\n   Color: " + color +
+                "\n   Accessories:" + accessories;
+    }
 }
