@@ -158,7 +158,8 @@ public class Vehicle {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Vehicle vehicle = (Vehicle) o;
-        return Objects.equals(lettersPlate, vehicle.lettersPlate) && Objects.equals(numbersPlate, vehicle.numbersPlate) && Objects.equals(cityPlate, vehicle.cityPlate) && Objects.equals(statePlate, vehicle.statePlate);
+        return Objects.equals(lettersPlate, vehicle.lettersPlate) && Objects.equals(numbersPlate, vehicle.numbersPlate)
+                && Objects.equals(cityPlate, vehicle.cityPlate) && Objects.equals(statePlate, vehicle.statePlate);
     }
 
     @Override

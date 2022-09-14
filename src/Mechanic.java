@@ -3,8 +3,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class Mechanic {
-
     private String CPF;
+    private String name;
     private LocalDate birthDate;
     private String gender;
     private Double salary;
@@ -14,15 +14,17 @@ public class Mechanic {
     public Mechanic() {
     }
 
-    public Mechanic(String CPF, LocalDate birthDate, String gender, Double salary) {
+    public Mechanic(String CPF, String name, LocalDate birthDate, String gender, Double salary) {
         this.CPF = CPF;
+        this.name = name;
         this.birthDate = birthDate;
         this.gender = gender;
         this.salary = salary;
     }
 
-    public Mechanic(String CPF, LocalDate birthDate, String gender, Double salary, List<String> emails, List<String> telephones) {
+    public Mechanic(String CPF, String name, LocalDate birthDate, String gender, Double salary, List<String> emails, List<String> telephones) {
         this.CPF = CPF;
+        this.name = name;
         this.birthDate = birthDate;
         this.gender = gender;
         this.salary = salary;
@@ -36,6 +38,14 @@ public class Mechanic {
 
     public void setCPF(String CPF) {
         this.CPF = CPF;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public LocalDate getBirthDate() {
@@ -93,13 +103,11 @@ public class Mechanic {
 
     @Override
     public String toString() {
-        return "Mechanic{" +
-                "CPF='" + CPF + '\'' +
-                ", birthDate=" + birthDate +
-                ", gender='" + gender + '\'' +
-                ", salary=" + salary +
-                ", emails=" + emails +
-                ", telephones=" + telephones +
-                '}';
+        return "CPF: " + CPF + "\tName: " + name +
+                "\n   Birth date: " + birthDate +
+                "\n   Gender: " + gender +
+                "\n   Salary: $" + String.format("%.2f", salary) +
+                "\n   Emails:" + emails +
+                "\n   Phone numbers:" + telephones;
     }
 }
