@@ -13,12 +13,14 @@ public class AppCli {
 
                 // [1] Mechanic submenu
                 case 1:
-                    System.out.println("MECHANIC SUBMENU");
+                    System.out.println("\n===== MECHANIC SUBMENU =====\n");
+                    option = getSubmenuOption();
                     break;
 
                 // [2] Vehicle submenu
                 case 2:
-                    System.out.println("VEHICLE SUBMENU");
+                    System.out.println("\n===== VEHICLE SUBMENU =====\n");
+                    option = getSubmenuOption();
                     break;
 
                 // [3] Exit
@@ -31,6 +33,17 @@ public class AppCli {
                     System.out.println("\n*-*-*- WARNING! *-*-*-*-*\nINVALID option. Try again\n*-*-*-*-*-*-*-*-*-*-*-*-*\n");
             }
         }
+    }
+
+    private static int getSubmenuOption() {
+        System.out.println("\t[1] Register");
+        System.out.println("\t[2] Update");
+        System.out.println("\t[3] List all");
+        System.out.println("\t[4] List one");
+        System.out.println("\t[5] Remove");
+
+        System.out.print("\nSelect one option: ");
+        return scanner.nextInt();
     }
 
     private static int getMainMenuOption() {
