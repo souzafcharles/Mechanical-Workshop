@@ -1,3 +1,5 @@
+package entities;
+
 import java.util.Objects;
 
 public class Vehicle {
@@ -30,6 +32,13 @@ public class Vehicle {
     private FuelType fuelType;
     private String color;
     private String accessories;
+
+    public Vehicle(String lettersPlate, String numbersPlate, String cityPlate, String statePlate) {
+        this.lettersPlate = lettersPlate;
+        this.numbersPlate = numbersPlate;
+        this.cityPlate = cityPlate;
+        this.statePlate = statePlate;
+    }
 
     public Vehicle(String lettersPlate, String numbersPlate, String cityPlate, String statePlate,
                    VehicleType vehicleType, String brand, String model, Integer year, Integer doors,
@@ -169,15 +178,14 @@ public class Vehicle {
 
     @Override
     public String toString() {
-        return "Plate: " + lettersPlate + "-" + numbersPlate + "-" + cityPlate + "-" + statePlate +
+        return "\nPlate: " + lettersPlate + "-" + numbersPlate + "-" + cityPlate + "-" + statePlate +
                 "\n   Type: " + vehicleType +
-                "\n   Brand: " + brand +
-                "\tModel: " + model +
-                "   (" + year + ")" +
+                "\n   Brand: " + brand + "\tModel: " + model + "  (" + year + ")" +
                 "\n   Doors: " + doors +
                 "\n   Seats: " + seats +
                 "\n   Fuel type: " + fuelType +
                 "\n   Color: " + color +
-                "\n   Accessories:" + accessories;
+                "\n   Accessories:" + accessories +
+                "\n\n-----------------------------";
     }
 }

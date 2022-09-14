@@ -1,9 +1,16 @@
+import entities.Vehicle;
+import services.VehicleService;
+
 import java.util.Scanner;
 
 public class AppCli {
     private static Scanner scanner = new Scanner(System.in);
 
+    private static VehicleService vehicleService = new VehicleService();
+
     public static void execute() {
+        createVehicleMock();
+
         int option = 0;
 
         while (option != 3) {
@@ -11,16 +18,61 @@ public class AppCli {
 
             switch (option) {
 
-                // [1] Mechanic submenu
+                // [1] entities.Mechanic submenu
                 case 1:
                     System.out.println("\n===== MECHANIC SUBMENU =====\n");
                     option = getSubmenuOption();
+
+                    switch (option) {
+                        case 1:
+                            break;
+
+                        case 2:
+                            break;
+
+                        case 3:
+                            option = 0;
+                            break;
+
+                        case 4:
+                            break;
+
+                        case 5:
+                            break;
+
+                        // Invalid options mechanic menu
+                        default:
+                            System.out.println("\n*-*-*- WARNING! *-*-*-*-*\nINVALID option. Try again\n*-*-*-*-*-*-*-*-*-*-*-*-*\n");
+                    }
                     break;
 
-                // [2] Vehicle submenu
+                // [2] entities.Vehicle submenu
                 case 2:
                     System.out.println("\n===== VEHICLE SUBMENU =====\n");
                     option = getSubmenuOption();
+
+                    switch (option) {
+                        case 1:
+                            break;
+
+                        case 2:
+                            break;
+
+                        case 3:
+                            vehicleService.findAll();
+                            option = 0;
+                            break;
+
+                        case 4:
+                            break;
+
+                        case 5:
+                            break;
+
+                        // Invalid options vehicle menu
+                        default:
+                            System.out.println("\n*-*-*- WARNING! *-*-*-*-*\nINVALID option. Try again\n*-*-*-*-*-*-*-*-*-*-*-*-*\n");
+                    }
                     break;
 
                 // [3] Exit
@@ -35,6 +87,20 @@ public class AppCli {
         }
     }
 
+    private static void createVehicleMock() {
+        vehicleService.addVehicle(new Vehicle(
+                "SC", "000", "São Carlos", "SP", Vehicle.VehicleType.SPORT_CAR,
+                "Peugeot", "RCZ", 2022, 2, 4, Vehicle.FuelType.FLEX, "Yellow", "Led light"));
+
+        vehicleService.addVehicle(new Vehicle(
+                "SC", "010", "Votuporanga", "SP", Vehicle.VehicleType.SUV,
+                "Renault", "Duster", 2021, 4, 5, Vehicle.FuelType.FLEX, "White", "Leather seat"));
+
+        vehicleService.addVehicle(new Vehicle(
+                "SC", "1", "J", "SP", Vehicle.VehicleType.SEDAN,
+                "Fiat", "Argo", 2020, 4, 5, Vehicle.FuelType.ALCOHOL, "Black", "None"));
+    }
+
     private static int getSubmenuOption() {
         System.out.println("\t[1] Register");
         System.out.println("\t[2] Update");
@@ -47,7 +113,7 @@ public class AppCli {
     }
 
     private static int getMainMenuOption() {
-        System.out.println("===== MAIN MENU - MECHANICAL WORKSHOP =====\n");
+        System.out.println("\n===== MAIN MENU - MECHANICAL WORKSHOP =====\n");
         System.out.println("\t[1] Mechanic Submenu");
         System.out.println("\t[2] Vehicle Submenu");
         System.out.println("\t[3] Exit");
