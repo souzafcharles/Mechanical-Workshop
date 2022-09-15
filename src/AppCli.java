@@ -55,7 +55,7 @@ public class AppCli {
 
                         // [2][1] Register a vehicle
                         case 1:
-                            getVehicleData();
+                            vehicleService.getVehicleData();
                             break;
 
                         case 2:
@@ -86,89 +86,6 @@ public class AppCli {
                 // Invalid options main menu
                 default:
                     System.out.println("\n*-*-*- WARNING! *-*-*-*-*\nINVALID option. Try again\n*-*-*-*-*-*-*-*-*-*-*-*-*\n");
-            }
-        }
-    }
-
-    private static Vehicle validatePlate() {
-        System.out.print(" 1. Letters plate: ");
-        scanner.nextLine();
-        String lettersPlate = scanner.nextLine();
-
-        System.out.print(" 2. Numbers plate: ");
-        String numbersPlate = scanner.nextLine();
-
-        System.out.print(" 3. City plate: ");
-        String cityPlate = scanner.nextLine();
-
-        System.out.print(" 4. State plate: ");
-        String statePlate = scanner.nextLine();
-
-        Vehicle vehicleToCheck = new Vehicle(lettersPlate, numbersPlate, cityPlate, statePlate);
-
-        if (vehicleService.vehicleExists(vehicleToCheck))
-            return null;
-        return vehicleToCheck;
-    }
-
-    private static void getVehicleData() {
-        System.out.println("\nFill vehicle data:");
-
-        Vehicle vehicleToValidate = validatePlate();
-
-        if (vehicleToValidate == null)
-            System.out.println("\nThe vehicle exists in the system. Try again.");
-        else {
-            System.out.print(" 5. Vehicle type: Sedan, Sport or SUV? ");
-            String vehicleTypeString = scanner.nextLine();
-
-            if (vehicleTypeString.equals("Sedan") ||
-                    vehicleTypeString.equals("Sport") || vehicleTypeString.equals("SUV")) {
-                Vehicle.VehicleType vehicleType = Vehicle.VehicleType.toEnum(vehicleTypeString);
-
-                System.out.print(" 6. Vehicle brand: ");
-                String brand = scanner.nextLine();
-
-                System.out.print(" 7. Vehicle model: ");
-                String model = scanner.nextLine();
-
-                System.out.print(" 8. Vehicle year: ");
-                Integer year = scanner.nextInt();
-
-                System.out.print(" 9. Vehicle doors: ");
-                Integer doors = scanner.nextInt();
-
-                System.out.print(" 10. Vehicle seats: ");
-                Integer seats = scanner.nextInt();
-
-                System.out.print(" 11. Vehicle fuel type: Alcohol, Flex or Gas? ");
-                scanner.nextLine();
-                String fuelTypeString = scanner.nextLine();
-
-                if (fuelTypeString.equals("Alcohol") || fuelTypeString.equals("Flex") || fuelTypeString.equals("Gas")) {
-                    Vehicle.FuelType fuelType = Vehicle.FuelType.toEnum(fuelTypeString);
-
-                    System.out.print(" 12. Vehicle color: ");
-                    String color = scanner.nextLine();
-
-                    System.out.print(" 13. Vehicle accessories: ");
-                    String accessories = scanner.nextLine();
-
-                    String lettersPlate = vehicleToValidate.getLettersPlate();
-                    String numbersPlate = vehicleToValidate.getNumbersPlate();
-                    String cityPlate = vehicleToValidate.getCityPlate();
-                    String statePlate = vehicleToValidate.getStatePlate();
-
-                    Vehicle vehicle = new Vehicle(lettersPlate, numbersPlate, cityPlate, statePlate,
-                            vehicleType, brand, model, year, doors, seats, fuelType, color, accessories);
-
-                    vehicleService.addVehicle(vehicle);
-                    System.out.println("\nVehicle successfully added to the system!");
-                } else {
-                    System.out.println("\nThe fuel type " + fuelTypeString + " doesn't exist in the system. Try again");
-                }
-            } else {
-                System.out.println("\nThe vehicle type " + vehicleTypeString + " doesn't exist in the system. Try again");
             }
         }
     }
