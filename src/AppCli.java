@@ -71,7 +71,9 @@ public class AppCli {
                             option = 0;
                             break;
 
+                        // [2][4] Find onde vehicle
                         case 4:
+                            vehicleService.vehicleToFind();
                             break;
 
                         case 5:

@@ -145,6 +145,31 @@ public class VehicleService {
         }
     }
 
+    public void vehicleToFind() {
+        if (vehicles.isEmpty())
+            System.out.println("\nThere is no vehicles on the system.");
+
+        else {
+            System.out.println("\nFill plate data:");
+
+            Vehicle vehiclePlate = getPlateData();
+
+            if (vehiclePlateIsNull(vehiclePlate))
+                System.out.println("\nThere is a null vehicle plate field. Please fill the input fields with a valid data.");
+
+            else {
+                int checkPosition = vehiclePosition(vehiclePlate);
+
+                if (checkPosition == -1)
+                    System.out.println("\nThe vehicle does not exists in the system. Try again.");
+
+                else {
+                    System.out.println(findOne(checkPosition));
+                }
+            }
+        }
+    }
+
     public void addVehicle(Vehicle vehicle) {
         vehicles.add(vehicle);
     }
@@ -158,5 +183,9 @@ public class VehicleService {
             System.out.println("\nThere is no vehicles on the system.");
         else
             vehicles.forEach(System.out::println);
+    }
+
+    public Vehicle findOne(int vehiclePosition) {
+        return vehicles.get(vehiclePosition);
     }
 }
