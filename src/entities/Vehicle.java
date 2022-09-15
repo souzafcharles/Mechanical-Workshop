@@ -1,7 +1,6 @@
 package entities;
 
-import java.util.Arrays;
-import java.util.Objects;
+import java.util.*;
 
 public class Vehicle {
     public enum VehicleType {
@@ -66,7 +65,7 @@ public class Vehicle {
     private Integer seats;
     private FuelType fuelType;
     private String color;
-    private String accessories;
+    private List<String> accessories = new ArrayList<>();
 
     public Vehicle(String lettersPlate, String numbersPlate, String cityPlate, String statePlate) {
         this.lettersPlate = lettersPlate;
@@ -76,8 +75,8 @@ public class Vehicle {
     }
 
     public Vehicle(String lettersPlate, String numbersPlate, String cityPlate, String statePlate,
-                   VehicleType vehicleType, String brand, String model, Integer year, Integer doors,
-                   Integer seats, FuelType fuelType, String color, String accessories) {
+                   VehicleType vehicleType, String brand, String model, Integer year, Integer doors, Integer seats,
+                   FuelType fuelType, String color, List<String> accessories) {
         this.lettersPlate = lettersPlate;
         this.numbersPlate = numbersPlate;
         this.cityPlate = cityPlate;
@@ -189,12 +188,12 @@ public class Vehicle {
         this.color = color;
     }
 
-    public String getAccessories() {
+    public List<String> getAccessories() {
         return accessories;
     }
 
-    public void setAccessories(String accessories) {
-        this.accessories = accessories;
+    public void addAccessory(String accessory) {
+        accessories.add(accessory);
     }
 
     @Override
@@ -211,6 +210,15 @@ public class Vehicle {
         return Objects.hash(lettersPlate, numbersPlate, cityPlate, statePlate);
     }
 
+    public String listAccessories() {
+        StringBuilder result = new StringBuilder();
+
+        for (String accessory : accessories) {
+            result.append("\n\t- ").append(accessory);
+        }
+        return result.toString();
+    }
+
     @Override
     public String toString() {
         return "\nPlate: " + lettersPlate + numbersPlate + " - " + cityPlate + "/" + statePlate +
@@ -220,7 +228,7 @@ public class Vehicle {
                 "\n   Seats: " + seats +
                 "\n   Fuel type: " + fuelType +
                 "\n   Color: " + color +
-                "\n   Accessories:" + accessories +
+                "\n   Accessories:" + listAccessories() +
                 "\n\n-----------------------------";
     }
 }

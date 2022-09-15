@@ -1,12 +1,14 @@
 import entities.Vehicle;
 import services.VehicleService;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class AppCli {
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
-    private static VehicleService vehicleService = new VehicleService();
+    private static final VehicleService vehicleService = new VehicleService();
 
     public static void execute() {
         createVehicleMock();
@@ -18,7 +20,7 @@ public class AppCli {
 
             switch (option) {
 
-                // [1] entities.Mechanic submenu
+                // [1] Mechanic submenu
                 case 1:
                     System.out.println("\n===== MECHANIC SUBMENU =====\n");
                     option = getSubmenuOption();
@@ -46,7 +48,7 @@ public class AppCli {
                     }
                     break;
 
-                // [2] entities.Vehicle submenu
+                // [2] Vehicle submenu
                 case 2:
                     System.out.println("\n===== VEHICLE SUBMENU =====\n");
                     option = getSubmenuOption();
@@ -81,6 +83,7 @@ public class AppCli {
                 // [3] Exit
                 case 3:
                     System.out.println("Program CLOSED. See you later!");
+                    scanner.close();
                     break;
 
                 // Invalid options main menu
@@ -91,17 +94,21 @@ public class AppCli {
     }
 
     private static void createVehicleMock() {
+        List<String> accessories1 = Arrays.asList("Automatic", "Led light", "Leather seat", "Air conditioning", "Wifi");
+        List<String> accessories2 = Arrays.asList("Automatic", "Led light", "Air conditioning");
+        List<String> accessories3 = Arrays.asList("Leather seat", "Air conditioning");
+
         vehicleService.addVehicle(new Vehicle(
                 "SC", "000", "São Carlos", "SP", Vehicle.VehicleType.toEnum("Sport"),
-                "Peugeot", "RCZ", 2022, 2, 4, Vehicle.FuelType.FLEX, "Yellow", "Led light"));
+                "Peugeot", "RCZ", 2022, 2, 4, Vehicle.FuelType.FLEX, "Yellow", accessories1));
 
         vehicleService.addVehicle(new Vehicle(
                 "SC", "010", "Votuporanga", "SP", Vehicle.VehicleType.toEnum("SUV"),
-                "Renault", "Duster", 2021, 4, 5, Vehicle.FuelType.GAS, "White", "Leather seat"));
+                "Renault", "Duster", 2021, 4, 5, Vehicle.FuelType.GAS, "White", accessories2));
 
         vehicleService.addVehicle(new Vehicle(
-                "SC", "1", "J", "SP", Vehicle.VehicleType.toEnum("Sedan"),
-                "Fiat", "Argo", 2020, 4, 5, Vehicle.FuelType.ALCOHOL, "Black", "None"));
+                "SC", "020", "Test", "devTest", Vehicle.VehicleType.toEnum("Sedan"),
+                "Fiat", "Argo", 2020, 4, 5, Vehicle.FuelType.ALCOHOL, "Black", accessories3));
     }
 
     private static int getSubmenuOption() {

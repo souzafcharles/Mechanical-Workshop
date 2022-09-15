@@ -2,18 +2,18 @@ package services;
 
 import entities.Vehicle;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
 public class VehicleService {
-    private List<Vehicle> vehicles = new LinkedList<>();
-    private static Scanner scanner;
+    private static final Scanner scanner = new Scanner(System.in);
 
+    private List<Vehicle> vehicles = new LinkedList<>();
 
     private Vehicle validatePlate() {
         System.out.print(" 1. Letters plate: ");
-        scanner.nextLine();
         String lettersPlate = scanner.nextLine();
 
         System.out.print(" 2. Numbers plate: ");
@@ -72,8 +72,16 @@ public class VehicleService {
                     System.out.print(" 12. Vehicle color: ");
                     String color = scanner.nextLine();
 
-                    System.out.print(" 13. Vehicle accessories: ");
-                    String accessories = scanner.nextLine();
+                    List<String> accessories = new ArrayList<>();
+                    char answer = 'y';
+                    while (answer != 'n') {
+                        System.out.print(" 13. Vehicle accessory: ");
+                        String accessory = scanner.nextLine();
+                        accessories.add(accessory);
+
+                        System.out.print("   Do you want add another accessory (y/n)? ");
+                        answer = scanner.nextLine().charAt(0);
+                    }
 
                     String lettersPlate = vehicleToValidate.getLettersPlate();
                     String numbersPlate = vehicleToValidate.getNumbersPlate();
