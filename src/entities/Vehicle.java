@@ -1,22 +1,57 @@
 package entities;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Vehicle {
     public enum VehicleType {
-        PICKUP,
-        SEDAN,
-        SPORT_CAR,
-        SUV,
-        TRUCK,
-        VAN
+        SEDAN("Sedan"),
+        SPORT_CAR("Sport"),
+        SUV("SUV"),
+        OTHER("Other");
+
+        private String vehicleType;
+
+        VehicleType(String vehicleType) {
+            this.vehicleType = vehicleType;
+        }
+
+        public static VehicleType toEnum(String value) {
+            return Arrays.stream(VehicleType.values())
+                    .filter(c -> value.equals(c.toString()))
+                    .findAny()
+                    .orElseThrow(IllegalArgumentException::new);
+        }
+
+        @Override
+        public String toString() {
+            return vehicleType;
+        }
     }
 
     public enum FuelType {
-        ALCOHOL,
-        DIESEL,
-        FLEX,
-        GAS
+        ALCOHOL("Alcohol"),
+        FLEX("Flex"),
+        GAS("Gas"),
+        OTHER("Other");
+
+        private String fuelType;
+
+        FuelType(String fuelType) {
+            this.fuelType = fuelType;
+        }
+
+        public static FuelType toEnum(String value) {
+            return Arrays.stream(FuelType.values())
+                    .filter(c -> value.equals(c.toString()))
+                    .findAny()
+                    .orElseThrow(IllegalArgumentException::new);
+        }
+
+        @Override
+        public String toString() {
+            return fuelType;
+        }
     }
 
     private String lettersPlate;
@@ -178,7 +213,7 @@ public class Vehicle {
 
     @Override
     public String toString() {
-        return "\nPlate: " + lettersPlate + "-" + numbersPlate + "-" + cityPlate + "-" + statePlate +
+        return "\nPlate: " + lettersPlate + numbersPlate + " - " + cityPlate + "/" + statePlate +
                 "\n   Type: " + vehicleType +
                 "\n   Brand: " + brand + "\tModel: " + model + "  (" + year + ")" +
                 "\n   Doors: " + doors +

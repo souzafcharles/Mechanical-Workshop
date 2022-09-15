@@ -13,12 +13,14 @@ public class VehicleService {
             if (v.equals(vehicle))
                 return true;
         }
-
         return false;
     }
 
     public void addVehicle(Vehicle vehicle) {
-        vehicles.add(vehicle);
+        if (vehicle == null)
+            System.out.println("\nVehicle is null. Please fill the input fields with a valid data.");
+        else
+            vehicles.add(vehicle);
     }
 
     public void findAll() {
