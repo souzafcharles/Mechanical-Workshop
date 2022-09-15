@@ -82,7 +82,7 @@ public class AppCli {
 
                 // [3] Exit
                 case 3:
-                    System.out.println("Program CLOSED. See you later!");
+                    System.out.println("\nProgram CLOSED. See you later!");
                     scanner.close();
                     break;
 
