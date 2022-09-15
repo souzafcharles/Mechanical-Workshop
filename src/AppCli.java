@@ -71,12 +71,14 @@ public class AppCli {
                             option = 0;
                             break;
 
-                        // [2][4] Find onde vehicle
+                        // [2][4] Find vehicle
                         case 4:
                             vehicleService.vehicleToFind();
                             break;
 
+                        // [2][5] Remove vehicle
                         case 5:
+                            vehicleService.vehicleToRemove();
                             break;
 
                         // Invalid options vehicle menu

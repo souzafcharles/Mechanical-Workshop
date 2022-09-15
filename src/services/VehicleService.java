@@ -164,7 +164,33 @@ public class VehicleService {
                     System.out.println("\nThe vehicle does not exists in the system. Try again.");
 
                 else {
-                    System.out.println(findOne(checkPosition));
+                    System.out.println(findVehicle(checkPosition));
+                }
+            }
+        }
+    }
+
+    public void vehicleToRemove() {
+        if (vehicles.isEmpty())
+            System.out.println("\nThere is no vehicles on the system.");
+
+        else {
+            System.out.println("\nFill plate data:");
+
+            Vehicle vehiclePlate = getPlateData();
+
+            if (vehiclePlateIsNull(vehiclePlate))
+                System.out.println("\nThere is a null vehicle plate field. Please fill the input fields with a valid data.");
+
+            else {
+                int checkPosition = vehiclePosition(vehiclePlate);
+
+                if (checkPosition == -1)
+                    System.out.println("\nThe vehicle does not exists in the system. Try again.");
+
+                else {
+                    removeVehicle(checkPosition);
+                    System.out.println("\nVehicle successfully removed in the system!");
                 }
             }
         }
@@ -185,7 +211,11 @@ public class VehicleService {
             vehicles.forEach(System.out::println);
     }
 
-    public Vehicle findOne(int vehiclePosition) {
+    public Vehicle findVehicle(int vehiclePosition) {
         return vehicles.get(vehiclePosition);
+    }
+
+    public void removeVehicle(int vehiclePosition) {
+        vehicles.remove(vehiclePosition);
     }
 }
