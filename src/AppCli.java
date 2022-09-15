@@ -57,12 +57,15 @@ public class AppCli {
 
                         // [2][1] Register a vehicle
                         case 1:
-                            vehicleService.getVehicleData();
+                            vehicleService.vehicleToAdd();
                             break;
 
+                        // [2][2] Update a vehicle
                         case 2:
+                            vehicleService.vehicleToUpdate();
                             break;
 
+                        // [2][3] Find all vehicles
                         case 3:
                             vehicleService.findAll();
                             option = 0;
