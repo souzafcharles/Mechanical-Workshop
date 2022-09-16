@@ -67,6 +67,9 @@ public class Vehicle {
     private String color;
     private List<String> accessories = new ArrayList<>();
 
+    public Vehicle() {
+    }
+
     public Vehicle(String lettersPlate, String numbersPlate, String cityPlate, String statePlate) {
         this.lettersPlate = lettersPlate;
         this.numbersPlate = numbersPlate;

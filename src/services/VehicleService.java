@@ -190,6 +190,10 @@ public class VehicleService {
         }
     }
 
+    public int countVehicles() {
+        return vehicles.size();
+    }
+
     public void addVehicle(Vehicle vehicle) {
         vehicles.add(vehicle);
     }
@@ -201,8 +205,10 @@ public class VehicleService {
     public void findAll() {
         if (vehicles.isEmpty())
             System.out.println("\nThere is no vehicles on the system.");
-        else
+        else {
+            System.out.println("\nThere is [" + countVehicles() + "] vehicles in the system");
             vehicles.forEach(System.out::println);
+        }
     }
 
     public Vehicle findVehicle(int vehiclePosition) {
