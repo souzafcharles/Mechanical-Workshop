@@ -13,6 +13,7 @@ public class VehicleService {
     private List<Vehicle> vehicles = new LinkedList<>();
 
     private Vehicle getPlateData() {
+        System.out.println("\nFill vehicle plate data:");
         System.out.print(" 1. Letters plate: ");
         String lettersPlate = scanner.nextLine();
 
@@ -29,6 +30,7 @@ public class VehicleService {
     }
 
     public Vehicle getVehicleData(Vehicle vehicleToValidate) {
+        System.out.println("\nFill vehicle data:");
         System.out.print(" 5. Vehicle type: Sedan, Sport, SUV or Other? ");
         String vehicleTypeString = scanner.nextLine();
 
@@ -102,8 +104,6 @@ public class VehicleService {
     }
 
     public void vehicleToAdd() {
-        System.out.println("\nFill vehicle data:");
-
         Vehicle vehiclePlate = getPlateData();
 
         if (vehiclePlateIsNull(vehiclePlate))
@@ -124,8 +124,6 @@ public class VehicleService {
     }
 
     public void vehicleToUpdate() {
-        System.out.println("\nFill vehicle data:");
-
         Vehicle vehiclePlate = getPlateData();
 
         if (vehiclePlateIsNull(vehiclePlate))
@@ -150,8 +148,6 @@ public class VehicleService {
             System.out.println("\nThere is no vehicles on the system.");
 
         else {
-            System.out.println("\nFill plate data:");
-
             Vehicle vehiclePlate = getPlateData();
 
             if (vehiclePlateIsNull(vehiclePlate))
@@ -175,8 +171,6 @@ public class VehicleService {
             System.out.println("\nThere is no vehicles on the system.");
 
         else {
-            System.out.println("\nFill plate data:");
-
             Vehicle vehiclePlate = getPlateData();
 
             if (vehiclePlateIsNull(vehiclePlate))
