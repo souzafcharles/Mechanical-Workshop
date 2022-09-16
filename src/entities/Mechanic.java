@@ -103,13 +103,32 @@ public class Mechanic {
         return Objects.hash(CPF);
     }
 
+    public String listEmails() {
+        StringBuilder result = new StringBuilder();
+
+        for (String email : emails) {
+            result.append("\n\t- ").append(email);
+        }
+        return result.toString();
+    }
+
+    public String listTelephoneNumbers() {
+        StringBuilder result = new StringBuilder();
+
+        for (String telephone : telephones) {
+            result.append("\n\t- ").append(telephone);
+        }
+        return result.toString();
+    }
+
     @Override
     public String toString() {
         return "CPF: " + CPF + "\tName: " + name +
                 "\n   Birth date: " + birthDate +
                 "\n   Gender: " + gender +
                 "\n   Salary: $" + String.format("%.2f", salary) +
-                "\n   Emails:" + emails +
-                "\n   Phone numbers:" + telephones;
+                "\n   Emails:" + listEmails() +
+                "\n   Phone numbers:" + listTelephoneNumbers() +
+                "\n\n-----------------------------";
     }
 }
