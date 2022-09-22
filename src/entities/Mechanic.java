@@ -1,31 +1,27 @@
 package entities;
 
-import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class Mechanic {
-    private String CPF;
+    private String cpf;
     private String name;
-    private LocalDate birthDate;
+    private String birthDate;
     private String gender;
     private Double salary;
-    private List<String> emails;
-    private List<String> telephones;
+    private List<String> emails = new ArrayList<>();
+    private List<String> telephones  = new ArrayList<>();
 
     public Mechanic() {
     }
 
-    public Mechanic(String CPF, String name, LocalDate birthDate, String gender, Double salary) {
-        this.CPF = CPF;
-        this.name = name;
-        this.birthDate = birthDate;
-        this.gender = gender;
-        this.salary = salary;
+    public Mechanic(String cpf) {
+        this.cpf = cpf;
     }
 
-    public Mechanic(String CPF, String name, LocalDate birthDate, String gender, Double salary, List<String> emails, List<String> telephones) {
-        this.CPF = CPF;
+    public Mechanic(String cpf, String name, String birthDate, String gender, Double salary, List<String> emails, List<String> telephones) {
+        this.cpf = cpf;
         this.name = name;
         this.birthDate = birthDate;
         this.gender = gender;
@@ -34,12 +30,13 @@ public class Mechanic {
         this.telephones = telephones;
     }
 
-    public String getCPF() {
-        return CPF;
+
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setCPF(String CPF) {
-        this.CPF = CPF;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getName() {
@@ -50,11 +47,11 @@ public class Mechanic {
         this.name = name;
     }
 
-    public LocalDate getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -95,12 +92,12 @@ public class Mechanic {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Mechanic mechanic = (Mechanic) o;
-        return CPF.equals(mechanic.CPF);
+        return cpf.equals(mechanic.cpf);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(CPF);
+        return Objects.hash(cpf);
     }
 
     public String listEmails() {
@@ -123,7 +120,7 @@ public class Mechanic {
 
     @Override
     public String toString() {
-        return "CPF: " + CPF + "\tName: " + name +
+        return "CPF: " + cpf + "\tName: " + name +
                 "\n   Birth date: " + birthDate +
                 "\n   Gender: " + gender +
                 "\n   Salary: $" + String.format("%.2f", salary) +

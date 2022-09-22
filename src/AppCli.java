@@ -1,4 +1,6 @@
+import entities.Mechanic;
 import entities.Vehicle;
+import services.MechanicService;
 import services.VehicleService;
 
 import java.util.Arrays;
@@ -8,6 +10,7 @@ import java.util.Scanner;
 public class AppCli {
     private static final Scanner scanner = new Scanner(System.in);
 
+    private static final MechanicService mechanicService = new MechanicService();
     private static final VehicleService vehicleService = new VehicleService();
 
     public static void execute() {
@@ -98,6 +101,13 @@ public class AppCli {
                     System.out.println("\n*-*-*- WARNING! *-*-*-*-*\nINVALID option. Try again\n*-*-*-*-*-*-*-*-*-*-*-*-*\n");
             }
         }
+    }
+
+    private static void createMechanicMock() {
+        mechanicService.addMechanic(new Mechanic());
+        mechanicService.addMechanic(new Mechanic());
+        mechanicService.addMechanic(new Mechanic());
+
     }
 
     private static void createVehicleMock() {
