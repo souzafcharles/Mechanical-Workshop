@@ -30,8 +30,6 @@ public class Mechanic {
         this.telephones = telephones;
     }
 
-
-
     public String getCpf() {
         return cpf;
     }
