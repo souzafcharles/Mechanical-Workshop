@@ -37,6 +37,7 @@ public class MechanicTest {
 
     @Order(1)
     @Test
+    @EnabledOnOs({OS.WINDOWS, OS.LINUX})
     @DisplayName("Checking the number of mechanic mocked in the system test")
     public void size() {
         assertEquals(3, mechanicService.countMechanics());
@@ -53,6 +54,7 @@ public class MechanicTest {
 
     @Order(3)
     @Test
+    @EnabledForJreRange(min = JRE.JAVA_11, max = JRE.JAVA_18)
     @DisplayName("Checking update and find mechanic methods by using getters and setters with assert all")
     public void populateMechanic_TestingUpdate_GetterAndSetters() {
         Mechanic mechanicToSet = new Mechanic();
