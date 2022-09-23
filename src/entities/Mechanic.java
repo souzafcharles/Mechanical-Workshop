@@ -86,6 +86,14 @@ public class Mechanic {
         this.telephones = telephones;
     }
 
+    public void addEmail(String email) {
+        emails.add(email);
+    }
+
+    public void addTelephone(String telephone) {
+        telephones.add(telephone);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

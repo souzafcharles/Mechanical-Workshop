@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -46,6 +47,36 @@ public class MechanicTest {
         Mechanic mechanicToRepeat = new Mechanic();
         mechanicService.addMechanic(mechanicToRepeat);
         assertEquals((3 + rep.getCurrentRepetition()), mechanicService.countMechanics());
+    }
+
+    @Order(3)
+    @Test
+    @DisplayName("Checking update and find mechanic methods by using getters and setters with assert all")
+    public void populateMechanic_TestingUpdate_GetterAndSetters() {
+        Mechanic mechanicToSet = new Mechanic();
+
+        mechanicToSet.setCpf("444.444.444-44");
+        mechanicToSet.setName("Cleide Lady Neide");
+        mechanicToSet.setBirthDate("10/02/1990");
+        mechanicToSet.setGender("F");
+        mechanicToSet.setSalary(4.444);
+        mechanicToSet.addEmail("cleide@email.com");
+        mechanicToSet.addTelephone("(44)44444-4444");
+
+        mechanicService.updateMechanic(4, mechanicToSet);
+
+        Mechanic mechanicUpdated = mechanicService.findMechanic(4);
+
+        assertAll("Checking getters and setters...",
+
+                () -> assertEquals("444.444.444-44", mechanicUpdated.getCpf()),
+                () -> assertEquals("Cleide Lady Neide",mechanicUpdated.getName()),
+                () -> assertEquals("10/02/1990",mechanicUpdated.getBirthDate()),
+                () -> assertEquals("F",mechanicUpdated.getGender()),
+                () -> assertEquals(4.444,mechanicUpdated.getSalary()),
+                () -> assertEquals(Arrays.asList("cleide@email.com"), mechanicUpdated.getEmails()),
+                () -> assertEquals(Arrays.asList("(44)44444-4444"), mechanicUpdated.getTelephones())
+        );
     }
 
     @Order(4)
