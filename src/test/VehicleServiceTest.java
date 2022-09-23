@@ -40,6 +40,7 @@ class VehicleServiceTest {
 
     @Order(1)
     @Test
+    @EnabledOnOs({OS.WINDOWS, OS.LINUX})
     @DisplayName("Checking the number of vehicles mocked in the system test")
     public void size() {
         assertEquals(3, vehicleService.countVehicles());
@@ -56,6 +57,7 @@ class VehicleServiceTest {
 
     @Order(3)
     @Test
+    @EnabledForJreRange(min = JRE.JAVA_11, max = JRE.JAVA_18)
     @DisplayName("Checking update and find vehicle methods by using getters and setters with assert all")
     public void populateVehicle_TestingUpdate_GetterAndSetters() {
         Vehicle vehicleToSet = new Vehicle();
