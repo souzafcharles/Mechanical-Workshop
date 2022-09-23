@@ -1,8 +1,12 @@
 import entities.Mechanic;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import services.MechanicService;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -42,5 +46,32 @@ public class MechanicTest {
         Mechanic mechanicToRepeat = new Mechanic();
         mechanicService.addMechanic(mechanicToRepeat);
         assertEquals((3 + rep.getCurrentRepetition()), mechanicService.countMechanics());
+    }
+
+    @Order(4)
+    @ParameterizedTest
+    @DisplayName("Checking mechanic with parameterized test")
+    @MethodSource("mechanicArguments")
+    public void checkCompareMechanic(Mechanic mechanicCpf) {
+        Mechanic mechanicParameterized = new Mechanic(mechanicCpf.getCpf());
+
+        assertEquals(mechanicCpf, mechanicParameterized);
+    }
+
+    static Stream<Arguments> mechanicArguments() {
+        return Stream.of(
+                Arguments.arguments(new Mechanic("111.111.111.11")),
+                Arguments.arguments(new Mechanic("222.222.222-22")),
+                Arguments.arguments(new Mechanic("333.333.333-33"))
+        );
+    }
+
+    @Order(5)
+    @Test
+    @DisplayName("Checking remove method")
+    public void checkRemoveVehicle() {
+        mechanicService.removeMechanic(5);
+        mechanicService.removeMechanic(4);
+        assertEquals(4, mechanicService.countMechanics());
     }
 }

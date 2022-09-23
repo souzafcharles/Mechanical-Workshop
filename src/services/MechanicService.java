@@ -135,7 +135,7 @@ public class MechanicService {
                 if (checkPosition == -1)
                     System.out.println("\nThe mechanic exists in the system. Try again.");
                 else {
-                    removeVehicle(checkPosition);
+                    removeMechanic(checkPosition);
                     System.out.println("\nMechanic successfully removed in the system!");
                 }
             }
@@ -167,7 +167,7 @@ public class MechanicService {
         return mechanics.get(mechanicPosition);
     }
 
-    public void removeVehicle(int mechanicPosition) {
+    public void removeMechanic(int mechanicPosition) {
         mechanics.remove(mechanicPosition);
     }
 }
