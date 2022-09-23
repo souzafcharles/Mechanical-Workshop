@@ -11,7 +11,7 @@ public class Mechanic {
     private String gender;
     private Double salary;
     private List<String> emails = new ArrayList<>();
-    private List<String> telephones  = new ArrayList<>();
+    private List<String> telephones = new ArrayList<>();
 
     public Mechanic() {
     }

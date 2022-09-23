@@ -1,6 +1,7 @@
 package services;
 
 import entities.Mechanic;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -64,7 +65,7 @@ public class MechanicService {
 
     public int mechanicPosition(Mechanic mechanicToFind) {
         int position = 0;
-        for (Mechanic mechanic: mechanics) {
+        for (Mechanic mechanic : mechanics) {
             if (mechanic.equals(mechanicToFind))
                 return position;
             position++;
@@ -88,7 +89,7 @@ public class MechanicService {
             }
         }
     }
-    
+
     public void mechanicToUpdate() {
         Mechanic mechanicCpf = getCpfData();
         if (mechanicCpfIsNull(mechanicCpf))
