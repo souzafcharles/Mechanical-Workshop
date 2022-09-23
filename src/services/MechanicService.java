@@ -88,6 +88,7 @@ public class MechanicService {
             }
         }
     }
+    
     public void mechanicToUpdate() {
         Mechanic mechanicCpf = getCpfData();
         if (mechanicCpfIsNull(mechanicCpf))
