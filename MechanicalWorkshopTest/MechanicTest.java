@@ -34,4 +34,13 @@ public class MechanicTest {
     public void size() {
         assertEquals(3, mechanicService.countMechanics());
     }
+
+    @Order(2)
+    @RepeatedTest(value = 3, name = "{displayName}: #{currentRepetition} mechanic")
+    @DisplayName("Checking insertions with repeated test")
+    public void populateMechanic_RepeatedTest(RepetitionInfo rep) {
+        Mechanic mechanicToRepeat = new Mechanic();
+        mechanicService.addMechanic(mechanicToRepeat);
+        assertEquals((3 + rep.getCurrentRepetition()), mechanicService.countMechanics());
+    }
 }
