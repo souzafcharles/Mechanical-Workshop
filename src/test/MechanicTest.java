@@ -19,8 +19,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class MechanicTest {
 
     private final MechanicService mechanicService = new MechanicService();
+   
     @BeforeAll
-
     public void mockTestInitialize() {
         List<String> email1 = Arrays.asList("balthazar@email.com");
         List<String> email2 = Arrays.asList("ophilomena", "ophelia@eail.com");
